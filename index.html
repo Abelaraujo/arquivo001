@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio - Hacker & Desenvolvedor</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fundo-primario: #faf8f3;
+    --fundo-secundario: #f0ebe0;
+    --texto-primario: #1a1a1a;
+    --texto-secundario: #4a4a4a;
+    --destaque: #d4a574;
+    --destaque-escuro: #b8864f;
+    --borda: #d4c4b0;
+    --sombra: rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background-color: var(--fundo-primario);
+    color: var(--texto-primario);
+    line-height: 1.6;
+    transition: background-color .5s ease, color .5s ease;
+}
+
+/* Container */
+.container-principal {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Foto de Perfil */
+.container-foto {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    animation: surgir 1s ease-out;
+}
+
+@keyframes surgir {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.foto-perfil {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid var(--destaque);
+    object-fit: cover;
+    box-shadow: 0 8px 24px var(--sombra);
+    transition: transform .3s ease, box-shadow .3s ease;
+    background-color: var(--fundo-secundario);
+}
+
+.foto-perfil:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(212, 165, 116, 0.3);
+}
+
+.cabecalho::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, var(--destaque), transparent 70%);
+    opacity: .1;
+    animation: pulsar 8s ease-in-out infinite;
+}
+
+@keyframes pulsar {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.titulo-principal {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--texto-primario), var(--destaque));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitulo {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: var(--texto-secundario);
+    letter-spacing: .05em;
+}
+
+/* Navegação */
+.menu-navegacao {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.menu-navegacao a {
+    position: relative;
+    text-decoration: none;
+    color: var(--texto-primario);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.menu-navegacao a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--destaque);
+    transition: .3s;
+}
+
+.menu-navegacao a:hover::after {
+    width: 100%;
+}
+
+/* Seções */
+.secao {
+    margin: 6rem 0;
+}
+
+.titulo-secao {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem,5vw,3.5rem);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/* Sobre */
+.conteudo-sobre {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--texto-secundario);
+}
+
+/* Projetos */
+.grade-projetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
+    gap: 2.5rem;
+}
+
+.cartao-projeto {
+    background: var(--fundo-secundario);
+    border: 2px solid var(--borda);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: .4s;
+}
+
+.cartao-projeto:hover {
+    transform: translateY(-8px);
+}
+
+.imagem-projeto {
+    height: 250px;
+    background: linear-gradient(135deg, var(--destaque), var(--destaque-escuro));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    opacity: .6;
+}
+
+.conteudo-projeto {
+    padding: 2rem;
+}
+
+.etiquetas-projeto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.etiqueta {
+    padding: .4rem 1rem;
+    background: var(--fundo-primario);
+    border-radius: 20px;
+    font-size: .85rem;
+}
+
+/* Habilidades */
+.grade-habilidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 2rem;
+}
+
+.categoria-habilidade {
+    background: var(--fundo-secundario);
+    border: 2px solid var(--borda);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+/* Contato */
+.conteudo-contato {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+.links-contato {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.botao-contato {
+    padding: 1rem 2.5rem;
+    background: var(--destaque);
+    color: var(--fundo-primario);
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+/* Rodapé */
+.rodape {
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-top: 6rem;
+    border-top: 2px solid var(--borda);
+}
+</style>
+</head>
+
+<body>
+<div class="container-principal">
+<header class="cabecalho">
+<div class="container-foto">
+<img src="img/luk.png" alt="Lukoki João" class="foto-perfil">
+</div>
+<h1 class="titulo-principal">Lukoki João</h1>
+<p class="subtitulo">Hacker & Desenvolvedor Front-end</p>
+</header>
+
+<nav class="menu-navegacao">
+<a href="#sobre">Sobre</a>
+<a href="#projetos">Projetos</a>
+<a href="#habilidades">Habilidades</a>
+<a href="#contato">Contato</a>
+</nav>
+
+<section id="sobre" class="secao">
+<h2 class="titulo-secao">Sobre Mim</h2>
+<div class="conteudo-sobre">
+<p>Olá! Sou um programador e estudante de pentest apaixonado por criar experiências digitais únicas e memoráveis.</p>
+</div>
+</section>
+
+<section id="projetos" class="secao">
+<h2 class="titulo-secao">Projetos</h2>
+<div class="grade-projetos">
+<div class="cartao-projeto"><div class="imagem-projeto">🎨</div><div class="conteudo-projeto"><h3>Plataforma de Design</h3></div></div>
+<div class="cartao-projeto"><div class="imagem-projeto">📱</div><div class="conteudo-projeto"><h3>App Mobile</h3></div></div>
+<div class="cartao-projeto"><div class="imagem-projeto">🛍️</div><div class="conteudo-projeto"><h3>E-commerce</h3></div></div>
+<div class="cartao-projeto"><div class="imagem-projeto">📊</div><div class="conteudo-projeto"><h3>Dashboard</h3></div></div>
+<div class="cartao-projeto"><div class="imagem-projeto">✍️</div><div class="conteudo-projeto"><h3>Blog</h3></div></div>
+<div class="cartao-projeto"><div class="imagem-projeto">🎭</div><div class="conteudo-projeto"><h3>Portfólio</h3></div></div>
+</div>
+</section>
+
+<section id="habilidades" class="secao">
+<h2 class="titulo-secao">Habilidades</h2>
+<div class="grade-habilidades">
+<div class="categoria-habilidade"><h3>Pentester</h3></div>
+<div class="categoria-habilidade"><h3>Front-end</h3></div>
+<div class="categoria-habilidade"><h3>Ferramentas</h3></div>
+</div>
+</section>
+
+<section id="contato" class="secao">
+<h2 class="titulo-secao">Contacto</h2>
+<div class="conteudo-contato">
+<div class="links-contato">
+<a class="botao-contato" href="mailto:lukokibenedito@gmail.com">Email</a>
+</div>
+</div>
+</section>
+
+<footer class="rodape">
+<p>&copy; 2026 Lukoki João</p>
+</footer>
+
+</div>
+</body>
+</html>
